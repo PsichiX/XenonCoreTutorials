@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Shader>
+   <Vertex>
+
+attribute vec4 vPosition;
+uniform vec2 uOffset;
+
+void main()
+{
+	const vec2 cnst = vec2(1.0, 2.0);
+	
+	gl_PointSize = vPosition.w;
+	vec2 pos = (uOffset + vPosition.xy) * vPosition.zz;
+	pos = mod(pos + cnst.xx, cnst.yy) - cnst.xx;
+	gl_Position = vec4(pos, 0.0, 1.0);
+}
+
+   </Vertex>
+   <Fragment>
+
+precision mediump float;
+
+void main()
+{
+   gl_FragColor = vec4(1.0);
+}
+
+   </Fragment>
+   <Data>
+      <Attribute name="vPosition" />
+      <Uniform name="uOffset" />
+   </Data>
+</Shader>

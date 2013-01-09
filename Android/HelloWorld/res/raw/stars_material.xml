@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<Material
+   effect="raw/stars_shader"
+   blendMode="false"
+   blendingSource="ONE"
+   blendingDestination="ZERO"
+   >
+</Material>
