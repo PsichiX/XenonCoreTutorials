@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Shader>
+   <Vertex>
+
+attribute vec2 vPosition;
+attribute vec2 vTexCoord;
+uniform mat4 uMatViewProjection;
+uniform mat4 uMatModel;
+varying vec2 coord;
+
+void main()
+{
+   coord = vTexCoord;
+   gl_Position = (uMatViewProjection * uMatModel) * vec4(vPosition, 0.0, 1.0);
+}
+
+   </Vertex>
+   <Fragment>
+
+precision mediump float;
+varying vec2 coord;
+
+void main()
+{
+   float len = length(coord) * 2.0;
+   float alp = ceil(1.0 - len);
+   gl_FragColor = vec4(0.0, 0.0, 0.0, alp);
+}
+
+   </Fragment>
+   <Data>
+      <Attribute name="vPosition" />
+      <Attribute name="vTexCoord" />
+      <Uniform name="uMatViewProjection" />
+      <Uniform name="uColor" />
+      <Uniform name="uMatModel" />
+   </Data>
+</Shader>
