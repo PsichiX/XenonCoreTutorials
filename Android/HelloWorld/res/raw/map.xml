@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<TileMapGenerator tilesetPath="raw/tileset">
+	<Maps>
+		<!--<Map>
+			0 1 1 0 0 1 1 1
+			0 1 1 0 0 0 1 1
+			0 1 1 0 0 0 0 1
+			0 1 1 0 0 0 0 0
+			0 1 1 1 0 0 0 0
+			0 0 0 0 0 0 0 0
+		</Map>-->
+		<Map name="map" cols="8" rows="8">
+			0 0 0 0 0 0 0 0
+			0 0 1 1 1 1 0 0
+			0 1 1 0 0 1 1 0
+			0 1 0 0 0 0 1 0
+			0 1 0 0 0 0 1 0
+			0 1 1 0 0 1 1 0
+			0 0 1 1 1 1 0 0
+			0 0 0 0 0 0 0 0
+		</Map>
+	</Maps>
+	<Patterns>
+		<Pattern replace="1B">
+			~ ~ ~
+			~ 0 ~
+			~ 1 ~
+		</Pattern>
+		<Pattern replace="1L">
+			~ ~ ~
+			1 0 ~
+			~ ~ ~
+		</Pattern>
+		<Pattern replace="1T">
+			~ 1 ~
+			~ 0 ~
+			~ ~ ~
+		</Pattern>
+		<Pattern replace="1R">
+			~ ~ ~
+			~ 0 1
+			~ ~ ~
+		</Pattern>
+		<Pattern replace="1BL">
+			~ ~ ~
+			0 0 ~
+			1 0 ~
+		</Pattern>
+		<Pattern replace="1TL">
+			1 0 ~
+			0 0 ~
+			~ ~ ~
+		</Pattern>
+		<Pattern replace="1TR">
+			~ 0 1
+			~ 0 0
+			~ ~ ~
+		</Pattern>
+		<Pattern replace="1BR">
+			~ ~ ~
+			~ 0 0
+			~ 0 1
+		</Pattern>
+		<Pattern replace="0TR">
+			~ ~ ~
+			1 0 ~
+			1 1 ~
+		</Pattern>
+		<Pattern replace="0BR">
+			1 1 ~
+			1 0 ~
+			~ ~ ~
+		</Pattern>
+		<Pattern replace="0BL">
+			~ 1 1
+			~ 0 1
+			~ ~ ~
+		</Pattern>
+		<Pattern replace="0TL">
+			~ ~ ~
+			~ 0 1
+			~ 1 1
+		</Pattern>
+	</Patterns>
+</TileMapGenerator>

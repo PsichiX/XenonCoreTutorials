@@ -3,6 +3,7 @@ package com.PsichiX.HelloWorld;
 import com.PsichiX.XenonCoreDroid.XeActivity;
 import com.PsichiX.XenonCoreDroid.XeApplication;
 import com.PsichiX.XenonCoreDroid.XeSense;
+import com.PsichiX.XenonCoreDroid.XePhoton;
 import com.PsichiX.XenonCoreDroid.Framework.Utils.Utils;
 import com.PsichiX.XenonCoreDroid.Framework.Graphics.Graphics;
 
@@ -28,8 +29,8 @@ public class MainActivity extends XeActivity
 		Graphics.initModule(getApplicationCore().getAssets(), getApplicationCore().getPhoton());
 		getApplicationCore().getTimer().setFixedStep(1000 / 30);
 		getApplicationCore().getPhoton().getRenderer().getTimer().setFixedStep(1000 / 30);
+		getApplicationCore().getPhoton().setRenderMode(XePhoton.RenderMode.QUEUE, true);
 		getApplicationCore().getPhoton().getRenderer().setClearBackground(true, 0.0f, 0.0f, 0.0f, 1.0f);
-		getApplicationCore().getPhoton().clearDrawCalls();
 		getApplicationCore().getSense().use(XeSense.Type.GRAVITY);
 		getApplicationCore().run(new MenuState());
 	}

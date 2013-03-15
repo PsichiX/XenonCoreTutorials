@@ -1,6 +1,7 @@
 package com.PsichiX.HelloWorld;
 
 import com.PsichiX.XenonCoreDroid.XeApplication.*;
+import com.PsichiX.XenonCoreDroid.XeUtils.*;
 import com.PsichiX.XenonCoreDroid.Framework.Graphics.*;
 
 public class MenuState extends State
@@ -31,30 +32,32 @@ public class MenuState extends State
 		mat = (Material)getApplication().getAssets().get(R.raw.badaboom_material, Material.class);
 		
 		_title = new Text();
-		_title.setPosition(0.0f, -50.0f);
-		_scn.attach(_title);
 		_title.build("Xenon Core Droid\nGame tutorial",
 			font, mat,
 			Font.Alignment.CENTER,
 			Font.Alignment.MIDDLE,
 			1.0f, 1.0f
 			);
+		_title.setPosition(0.0f, -50.0f);
+		_scn.attach(_title);
 		
 		_play = new Text();
-		_play.setPosition(0.0f, 50.0f);
-		_scn.attach(_play);
 		_play.build("Tap to Play",
 			font, mat,
 			Font.Alignment.CENTER,
 			Font.Alignment.MIDDLE,
 			1.0f, 1.0f
 			);
+		_play.setPosition(0.0f, 50.0f);
+		_scn.attach(_play);
+		
+		//getApplication().getPhoton().getRenderer().setClearBackground(true, 1.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
 	@Override
 	public void onExit()
 	{
-		_scn.detachAll();
+		_scn.releaseAll();
 	}
 	
 	@Override
@@ -66,8 +69,8 @@ public class MenuState extends State
 	@Override
 	public void onUpdate()
 	{
-		//float dt = getApplication().getTimer().getDeltaTime() / 1000.0f;
-		float dt = 1.0f / 30.0f;
+		float dt = getApplication().getTimer().getDeltaTime() / 1000.0f;
+		//float dt = 1.0f / 30.0f;
 		
 		_stars.setOffset(
 			_stars.getOffsetX(),

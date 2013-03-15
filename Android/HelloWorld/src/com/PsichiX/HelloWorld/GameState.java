@@ -11,8 +11,7 @@ public class GameState extends State implements CommandQueue.Delegate
 {
 	private Camera2D _cam;
 	private Scene _scn;
-	private ShapeComparator.DescZ _sorter = new ShapeComparator.DescZ();
-	private ActorsManager _actors = new ActorsManager();
+	private ActorsManager _actors = new ActorsManager(this);
 	private CollisionManager _colls = new CollisionManager();
 	private CommandQueue _cmds = new CommandQueue();
 	private Stars _stars;
@@ -25,6 +24,8 @@ public class GameState extends State implements CommandQueue.Delegate
 	private int _score = 0;
 	private float _respawn = 1.2f;
 	private float _spawnAccel = 0.0f;
+	private Text _status;
+	private float _statusTimer = 1.0f;
 	
 	@Override
 	public void onEnter()
@@ -59,6 +60,7 @@ public class GameState extends State implements CommandQueue.Delegate
 		
 		_font = (Font)getApplication().getAssets().get(R.raw.badaboom_font, Font.class);
 		_fontMat = (Material)getApplication().getAssets().get(R.raw.badaboom_material, Material.class);
+		
 		_energyText = new Text();
 		_energy = _ship.getEnergy();
 		_energyText.setPosition(
@@ -67,6 +69,7 @@ public class GameState extends State implements CommandQueue.Delegate
 			-1.0f);
 		setEnergy(_energy);
 		_scn.attach(_energyText);
+		
 		_scoreText = new Text();
 		_scoreText.setPosition(
 			_cam.getViewWidth() * 0.5f - 5.0f,
@@ -75,6 +78,15 @@ public class GameState extends State implements CommandQueue.Delegate
 		setScore(_score);
 		_scn.attach(_scoreText);
 		
+		_status = new Text();
+		_status.setPosition(
+			_cam.getViewWidth() * 0.5f - 5.0f,
+			_cam.getViewHeight() * -0.5f,
+			-1.0f);
+		setStatus(0, 0);
+		_scn.attach(_status);
+		_statusTimer = 1.0f;
+		
 		getApplication().getAssets().get(R.raw.bullet_material, Material.class);
 		getApplication().getAssets().get(R.raw.rock_material, Material.class);
 	}
@@ -82,7 +94,7 @@ public class GameState extends State implements CommandQueue.Delegate
 	@Override
 	public void onExit()
 	{
-		_scn.detachAll();
+		_scn.releaseAll();
 		_actors.detachAll();
 		_colls.detachAll();
 	}
@@ -104,8 +116,18 @@ public class GameState extends State implements CommandQueue.Delegate
 	{
 		getApplication().getSense().setCoordsOrientation(-1);
 		
-		//float dt = getApplication().getTimer().getDeltaTime() / 1000.0f;
-		float dt = 1.0f / 30.0f;
+		float dt = getApplication().getTimer().getDeltaTime() / 1000.0f;
+		//float dt = 1.0f / 30.0f;
+		
+		_statusTimer -= dt;
+		if(_statusTimer <= 0.0f)
+		{
+			_statusTimer = 1.0f;
+			setStatus(
+				getApplication().getTimer().getFPS(),
+				getApplication().getPhoton().getRenderer().getTimer().getFPS()
+				);
+		}
 		
 		_spawnAccel += dt;
 		if(_spawnAccel >= _respawn)
@@ -138,7 +160,6 @@ public class GameState extends State implements CommandQueue.Delegate
 			_stars.getOffsetX() - (_ship.getMoveX() * dt * 0.2f),
 			_stars.getOffsetY() - (_ship.getMoveY() * dt * 0.1f) - (0.2f * dt)
 			);
-		_scn.sort(_sorter);
 		_scn.update(dt);
 	}
 	
@@ -172,10 +193,19 @@ public class GameState extends State implements CommandQueue.Delegate
 	
 	private void setScore(int s)
 	{
-		_scoreText.build("Score: " + (int)s,
+		_scoreText.build("Score: " + s,
 			_font, _fontMat,
 			Font.Alignment.RIGHT,
 			Font.Alignment.BOTTOM,
+			0.5f, 0.5f);
+	}
+	
+	private void setStatus(int ufps, int rfps)
+	{
+		_status.build("UFPS: " + ufps + "\nRFPS: " + rfps,
+			_font, _fontMat,
+			Font.Alignment.RIGHT,
+			Font.Alignment.TOP,
 			0.5f, 0.5f);
 	}
 }

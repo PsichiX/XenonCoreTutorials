@@ -17,6 +17,7 @@ public final class R {
         public static final int logo=0x7f020003;
         public static final int rock=0x7f020004;
         public static final int ship=0x7f020005;
+        public static final int terrain_tiles=0x7f020006;
     }
     public static final class id {
         public static final int vwView=0x7f050000;
@@ -35,10 +36,13 @@ public final class R {
         public static final int canvas_scene=0x7f040007;
         public static final int color_shader=0x7f040008;
         public static final int logo_material=0x7f040009;
-        public static final int rock_material=0x7f04000a;
-        public static final int scene=0x7f04000b;
-        public static final int ship_material=0x7f04000c;
-        public static final int stars_material=0x7f04000d;
-        public static final int stars_shader=0x7f04000e;
+        public static final int map=0x7f04000a;
+        public static final int rock_material=0x7f04000b;
+        public static final int scene=0x7f04000c;
+        public static final int ship_material=0x7f04000d;
+        public static final int stars_material=0x7f04000e;
+        public static final int stars_shader=0x7f04000f;
+        public static final int terrain_material=0x7f040010;
+        public static final int tileset=0x7f040011;
     }
 }

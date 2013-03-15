@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Canvas
+   width="512"
+   height="256"
+   camera2d="raw/canvas_camera"
+>
+   <ClearBg
+      mode="true"
+      red="0"
+      green="0"
+      blue="0"
+      alpha="0"
+   />
+</Canvas>

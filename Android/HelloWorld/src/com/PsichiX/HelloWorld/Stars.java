@@ -15,8 +15,8 @@ public class Stars extends Shape
 		_count = count;
 		float[] vd = new float[4 * count];
 		XePhoton.VertexArray va = Graphics.renderer().createVertexArray(4, count, vd);
-		setVertexArray("vPosition", va);
 		setMaterial(material);
+		setVertexArray("vPosition", va);
 		setDrawMode(XePhoton.DrawMode.POINTS);
 	}
 	
@@ -24,7 +24,7 @@ public class Stars extends Shape
 	{
 		_off[0] = x;
 		_off[1] = y;
-		getMaterial().setPropertyVec("uOffset", _off);
+		getProperties().setVec("uOffset", _off);
 	}
 	
 	public float getOffsetX()
