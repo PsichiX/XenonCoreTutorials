@@ -1,4 +1,4 @@
-package com.PsichiX.Hokey;
+package com.PsichiX.TileMaps;
 
 import com.PsichiX.XenonCoreDroid.XeActivity;
 import com.PsichiX.XenonCoreDroid.XeApplication;
@@ -17,7 +17,7 @@ public class MainActivity extends XeActivity
 		XeApplication.SETUP_SOUND_STREAMS = 4;
 		XeApplication.SETUP_WINDOW_HAS_TITLE = false;
 		XeApplication.SETUP_WINDOW_FULLSCREEN = true;
-		XeApplication.SETUP_SCREEN_ORIENTATION = XeApplication.Orientation.PORTRAIT;
+		XeApplication.SETUP_SCREEN_ORIENTATION = XeApplication.Orientation.LANDSCAPE;
 		
 		// create application
 		super.onCreate(savedInstanceState);
@@ -29,6 +29,6 @@ public class MainActivity extends XeActivity
 		getApplicationCore().getPhoton().getRenderer().getTimer().setFixedStep(1000 / 30);
 		getApplicationCore().getPhoton().setRenderMode(XePhoton.RenderMode.QUEUE, true);
 		getApplicationCore().getPhoton().getRenderer().setClearBackground(true, 1.0f, 1.0f, 1.0f, 1.0f);
-		getApplicationCore().run(new MenuState());
+		getApplicationCore().run(new GameState());
 	}
 }

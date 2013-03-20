@@ -9,8 +9,7 @@ public class GameState extends State implements CommandQueue.Delegate
 {
 	private Camera2D _cam;
 	private Scene _scn;
-	private ShapeComparator.DescZ _sorter = new ShapeComparator.DescZ();
-	private ActorsManager _actors = new ActorsManager();
+	private ActorsManager _actors = new ActorsManager(this);
 	private CollisionManager _colls = new CollisionManager();
 	private CommandQueue _cmds = new CommandQueue();
 	private Player[] _players = new Player[2];
@@ -123,7 +122,6 @@ public class GameState extends State implements CommandQueue.Delegate
 		_cmds.run();
 		_actors.onUpdate(dt);
 		_colls.test();
-		_scn.sort(_sorter);
 		_scn.update(dt);
 	}
 	

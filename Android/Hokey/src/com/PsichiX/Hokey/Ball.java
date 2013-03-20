@@ -3,7 +3,6 @@ package com.PsichiX.Hokey;
 import com.PsichiX.XenonCoreDroid.Framework.Graphics.*;
 import com.PsichiX.XenonCoreDroid.Framework.Actors.*;
 import com.PsichiX.XenonCoreDroid.XeUtils.*;
-import com.PsichiX.XenonCoreDroid.XeApplication.*;
 
 public class Ball extends ActorSprite implements ICollidable
 {
@@ -85,7 +84,7 @@ public class Ball extends ActorSprite implements ICollidable
 			_spdY = Math.abs(_spdY);
 			if(x > -1.0f && x < 1.0f && _rcv != null)
 			{
-				_rcv.queueCommand(this, "Hit", new Integer(-1));
+				_rcv.queueCommand(this, "Hit", Integer.valueOf(-1));
 				x = y = _spdX = _spdY = 0.0f;
 			}
 		}
@@ -94,7 +93,7 @@ public class Ball extends ActorSprite implements ICollidable
 			_spdY = -Math.abs(_spdY);
 			if(x > -1.0f && x < 1.0f && _rcv != null)
 			{
-				_rcv.queueCommand(this, "Hit", new Integer(1));
+				_rcv.queueCommand(this, "Hit", Integer.valueOf(1));
 				x = y = _spdX = _spdY = 0.0f;
 			}
 		}

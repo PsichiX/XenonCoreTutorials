@@ -2,8 +2,6 @@ package com.PsichiX.Hokey;
 
 import com.PsichiX.XenonCoreDroid.XeApplication.*;
 import com.PsichiX.XenonCoreDroid.Framework.Graphics.*;
-import com.PsichiX.XenonCoreDroid.Framework.Actors.*;
-import com.PsichiX.XenonCoreDroid.XeUtils.*;
 
 public class MenuState extends State
 {

@@ -1,7 +1,6 @@
 package com.PsichiX.HelloWorld;
 
 import com.PsichiX.XenonCoreDroid.XeApplication.*;
-import com.PsichiX.XenonCoreDroid.XeUtils.*;
 import com.PsichiX.XenonCoreDroid.Framework.Graphics.*;
 
 public class MenuState extends State

@@ -1,6 +1,6 @@
 // BeanShell compile script
 //	
-name = "HelloWorld";
+name = "TileMaps";
 
 packageName="com.PsichiX";
 androidJarPath = "";
